@@ -10,10 +10,55 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarTest();
+            //CarTest();
             //ColorTest();
             //BrandTest();
+            //CustomerTest();
+            //UserTest();
+            RentalTest();
         }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.GetAll();
+            rentalManager.Add(new Rental { Id=2, CustomerId=1, RentDate=DateTime.Now, ReturnDate = DateTime.Now.AddDays(+3) });
+            //rentalManager.Delete(new Rental { RentalId = 2 });
+            //rentalManager.Update(new Rental { RentalId=2, Id=2, CustomerId=1});
+            foreach (var rental in result.Data)
+            {
+                Console.WriteLine(rental.Id+" "+rental.CustomerId+" "+rental.RentDate+" "+rental.ReturnDate);
+            }
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.GetAll();
+            customerManager.Add(new Customer { UserId=2, CompanyName = "İndirim" });
+            //colorManager.Delete(new Customer { CustomerId = 2 });
+            //customerManager.Update(new Customer { CustomerId = 1, CompanyName="Süper Fırsat"});
+            foreach (var customer in result.Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
+
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            var result = userManager.GetAll();
+            userManager.Add(new User { FirstName = "Melike", LastName="Fındıklı", Email="melikefindikli@gmail.com", Password="1234567" });
+            //userManager.Delete(new User { UserId = 2 });
+            userManager.Update(new User { UserId = 2, Password = "3216547" });
+            foreach (var user in result.Data)
+            {
+                Console.WriteLine(user.FirstName+" "+user.LastName+" "+user.Email+" "+user.Password);
+            }
+
+        }
+
         /*private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
