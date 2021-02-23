@@ -22,7 +22,7 @@ namespace ConsoleUI
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.GetAll();
-            rentalManager.Add(new Rental { Id=2, CustomerId=1, RentDate=DateTime.Now, ReturnDate = DateTime.Now.AddDays(+3) });
+            rentalManager.Add(new Rental { Id=2, CustomerId=2, RentDate=DateTime.Now, ReturnDate = DateTime.Now.AddDays(+3) });
             //rentalManager.Delete(new Rental { RentalId = 2 });
             //rentalManager.Update(new Rental { RentalId=2, Id=2, CustomerId=1});
             foreach (var rental in result.Data)
