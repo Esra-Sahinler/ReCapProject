@@ -42,5 +42,7 @@ namespace Business.Constants
         public static string RentalUpdated = "Araba Kiralama  Güncellendi";
         public static string RentalInvalid = "Araba Kiralama Geçersiz";
         public static string RentalsListed = "Araba Kiralamaları Listelendi";
+
+        public static string AuthorizationDenied = "Yetkiniz yok";
     }
 }

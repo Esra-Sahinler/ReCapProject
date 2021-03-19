@@ -24,10 +24,12 @@ CREATE TABLE [dbo].[Cars] (
 
 CREATE TABLE [dbo].[Users] (
     [UserId]   INT           IDENTITY (1, 1) NOT NULL,
-    [FirstName] NVARCHAR (50) NULL,
-	[LastName] NVARCHAR (50) NULL,
-	[Email] NVARCHAR (50) NULL,
-	[Password] NVARCHAR (50) NULL,
+    [FirstName] VARCHAR (50) NOT NULL,
+	[LastName] VARCHAR (50) NOT NULL,
+	[Email] VARCHAR (50) NOT NULL,
+	[PasswordHash] BINARY (500) NOT NULL,
+	[PasswordSalt] BINARY (500) NOT NULL,
+	[Status] BIT NOT NULL,
     PRIMARY KEY CLUSTERED ([UserId] ASC)
 );
 
@@ -50,6 +52,28 @@ CREATE TABLE [dbo].[Rentals] (
     FOREIGN KEY ([CustomerId]) REFERENCES [dbo].[Customers] ([CustomerId])
 );
 
+CREATE TABLE [dbo].[OperationClaims](
+	[Id] INT    IDENTITY(1,1) NOT NULL,
+	[Name] VARCHAR(250) NOT NULL,
+	PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[UserOperationClaims](
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[UserId] INT NOT NULL,
+	[OperationClaimId] INT NOT NULL,
+	PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[CarImages] (
+	[ImageId] INT IDENTITY(1,1) NOT NULL,
+	[Id] INT NULL,
+	[ImagePath] NVARCHAR (50) NULL,
+	[Date] DATETIME NULL,
+	PRIMARY KEY CLUSTERED ([ImageId] ASC),
+	FOREIGN KEY ([Id]) REFERENCES [dbo].[Cars] ([Id])
+);
+
 INSERT INTO Colors(ColorName) VALUES
 	('Kırmızı'),
 	('Mavi'),
@@ -66,10 +90,7 @@ INSERT INTO Cars(BrandId,ColorId,ModelYear,DailyPrice,Description) VALUES
 	('2','1','2017','400','Benzin'),
 	('2','2','2019','625','Dizel');
 
-INSERT INTO Users(FirstName,LastName,Email,Password) VALUES
-	('Esra','Şahinler','esrasahinler@gmail.com','123456'),
-	('Ceren','Esirgenci','cerenesirgenci@gmail.com','465789'),
-	('Onur','Erikçi','onurerikci@gmail.com','987654');
+
 
 INSERT INTO Customers(UserId,CompanyName) VALUES
 	('1','Kara cuma'),

@@ -45,19 +45,19 @@ namespace ConsoleUI
 
         }
 
-        private static void UserTest()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
-            var result = userManager.GetAll();
-            userManager.Add(new User { FirstName = "Melike", LastName="Fındıklı", Email="melikefindikli@gmail.com", Password="1234567" });
-            //userManager.Delete(new User { UserId = 2 });
-            userManager.Update(new User { UserId = 2, Password = "3216547" });
-            foreach (var user in result.Data)
-            {
-                Console.WriteLine(user.FirstName+" "+user.LastName+" "+user.Email+" "+user.Password);
-            }
+        //private static void UserTest()
+        //{
+        //    UserManager userManager = new UserManager(new EfUserDal());
+        //    var result = userManager.GetAll();
+        //    userManager.Add(new User { FirstName = "Melike", LastName="Fındıklı", Email="melikefindikli@gmail.com", Password="1234567" });
+        //    //userManager.Delete(new User { UserId = 2 });
+        //    userManager.Update(new User { UserId = 2, Password = "3216547" });
+        //    foreach (var user in result.Data)
+        //    {
+        //        Console.WriteLine(user.FirstName+" "+user.LastName+" "+user.Email+" "+user.Password);
+        //    }
 
-        }
+        //}
 
         /*private static void ColorTest()
         {
