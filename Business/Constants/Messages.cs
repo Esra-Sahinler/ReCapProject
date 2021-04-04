@@ -44,5 +44,7 @@ namespace Business.Constants
         public static string RentalsListed = "Araba Kiralamaları Listelendi";
 
         public static string AuthorizationDenied = "Yetkiniz yok";
+
+        public static string CarImageLimitExceeded = "Araba resim sınırı aşıldı";
     }
 }

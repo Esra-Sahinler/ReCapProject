@@ -82,5 +82,10 @@ namespace Business.Concrete
             _carDal.Add(car);
             return new SuccessResult(Messages.CarUpdated);
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails(int Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
