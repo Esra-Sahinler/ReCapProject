@@ -74,6 +74,7 @@ CREATE TABLE [dbo].[CarImages] (
 	FOREIGN KEY ([Id]) REFERENCES [dbo].[Cars] ([Id])
 );
 
+
 INSERT INTO Colors(ColorName) VALUES
 	('Kırmızı'),
 	('Mavi'),
