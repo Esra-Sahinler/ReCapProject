@@ -8,6 +8,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,11 +44,23 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomersListed);
         }
 
+        public IDataResult<CustomerDetailDto> GetByEmail(string email)
+        {
+            var getByEmail = _customerDal.GetByEmail(user => user.Email == email);
+            return new SuccessDataResult<CustomerDetailDto>(getByEmail);
+        }
+
         [CacheAspect]
         [PerformanceAspect(5)]
         public IDataResult<Customer> GetById(int customerId)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customerId));
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
+        {
+            var getCustomerDetails = _customerDal.GetCustomerDetails();
+            return new SuccessDataResult<List<CustomerDetailDto>>(getCustomerDetails);
         }
 
         [ValidationAspect(typeof(CustomerValidator))]

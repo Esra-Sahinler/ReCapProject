@@ -15,21 +15,21 @@ namespace ConsoleUI
             //BrandTest();
             //CustomerTest();
             //UserTest();
-            RentalTest();
+            //RentalTest();
         }
 
-        private static void RentalTest()
-        {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            var result = rentalManager.GetAll();
-            rentalManager.Add(new Rental { Id=2, CustomerId=2, RentDate=DateTime.Now, ReturnDate = DateTime.Now.AddDays(+3) });
-            //rentalManager.Delete(new Rental { RentalId = 2 });
-            //rentalManager.Update(new Rental { RentalId=2, Id=2, CustomerId=1});
-            foreach (var rental in result.Data)
-            {
-                Console.WriteLine(rental.Id+" "+rental.CustomerId+" "+rental.RentDate+" "+rental.ReturnDate);
-            }
-        }
+        //private static void RentalTest()
+        //{
+        //    RentalManager rentalManager = new RentalManager(new EfRentalDal());
+        //    var result = rentalManager.GetAll();
+        //    rentalManager.Add(new Rental { Id=2, CustomerId=2, RentDate=DateTime.Now, ReturnDate = DateTime.Now.AddDays(+3) });
+        //    //rentalManager.Delete(new Rental { RentalId = 2 });
+        //    //rentalManager.Update(new Rental { RentalId=2, Id=2, CustomerId=1});
+        //    foreach (var rental in result.Data)
+        //    {
+        //        Console.WriteLine(rental.Id+" "+rental.CustomerId+" "+rental.RentDate+" "+rental.ReturnDate);
+        //    }
+        //}
 
         private static void CustomerTest()
         {

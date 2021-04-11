@@ -51,5 +51,8 @@ namespace Business.Constants
         public static string CardUpdated = "Kart güncellendi";
         public static string CardAdded = "Kart eklendi";
         public static string CardDeleted = "Kart silindi";
+
+        public static string CustomerFindexPointIsZero = "Findex puanınız bulunamadı";
+        public static string CustomerScoreIsInsufficient = "Findex puanınız yetersiz";
     }
 }
